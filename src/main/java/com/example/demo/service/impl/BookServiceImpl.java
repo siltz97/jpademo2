@@ -1,9 +1,9 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Book;
+import com.example.demo.entity.primary.Book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.example.demo.repo.BookRepository;
+import com.example.demo.repo.primary.BookRepository;
 import com.example.demo.service.BookService;
 
 import java.util.List;

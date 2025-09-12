@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Book;
+import com.example.demo.entity.primary.Book;
 
 import java.util.List;
 
