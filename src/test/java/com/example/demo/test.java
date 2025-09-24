@@ -17,10 +17,7 @@ public class test {
     public void test() {
         Book book = new Book();
         book.setTitle("adsa");
-        book.setAuthor("author");
         book.setGenre("dwad");
-        book.setTotalCopies(11);
-        book.setAvailableCopies(1);
         bookService.insert(book);
         System.out.println(bookService.findAll());
     }

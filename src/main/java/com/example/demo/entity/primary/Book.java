@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 @Entity
-
 @Table(schema="dbo",name="Libri")
 public class Book {
 
@@ -16,12 +15,10 @@ public class Book {
     private Integer id;
     @Column(name="title")
     private String title;
-    @Column(name="author")
-    private String author;
     @Column(name="genre")
     private String genre;
-    @Column(name="totalCopies")
-    private Integer totalCopies;
-    @Column(name="availableCopies")
-    private Integer availableCopies;
+
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private Author mainAuthor;
 }
