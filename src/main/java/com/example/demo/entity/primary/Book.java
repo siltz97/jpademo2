@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Entity
 
-@Table(schema="dbo",name="Libri")
+@Table(schema="dbo",name="library_books")
 public class Book {
 
     @Id
@@ -20,8 +20,8 @@ public class Book {
     private String author;
     @Column(name="genre")
     private String genre;
-    @Column(name="totalCopies")
+    @Column(name="total_copies")
     private Integer totalCopies;
-    @Column(name="availableCopies")
+    @Column(name="available_copies")
     private Integer availableCopies;
 }
