@@ -38,7 +38,6 @@ public class PrimaryDB {
     @ConfigurationProperties("spring.datasource.primary")
 
     public DataSource primaryDataSource() {
-//        return DataSourceBuilder.create().build();
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         dataSource.setUrl("jdbc:sqlserver://fbk-data-office-sql-managed-instance-prod-00.bddaf59482ea.database.windows.net;databaseName=Test");
