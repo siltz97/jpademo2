@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.entity.primary.Book;
+import com.example.demo.entity.primary.BookEntity;
 import com.example.demo.service.impl.BookServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ public class test {
 
     @Test
     public void test() {
-        Book book = new Book();
-        book.setTitle("adsa");
-        book.setGenre("dwad");
-        bookService.insert(book);
+        BookEntity bookEntity = new BookEntity();
+        bookEntity.setTitle("adsa");
+        bookEntity.setGenre("dwad");
+        bookService.insert(bookEntity);
         System.out.println(bookService.findAll());
     }
 }

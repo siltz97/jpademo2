@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.primary.Book;
+import com.example.demo.entity.primary.BookEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.example.demo.repo.primary.BookRepository;
@@ -16,25 +16,25 @@ public class BookServiceImpl implements BookService {
 
 
     @Override
-    public Book findByBookId(Integer id) {
+    public BookEntity findByBookId(Integer id) {
         return bookRepository.findById(id).get();
     }
 
     @Override
-    public List<Book> findAll() {
+    public List<BookEntity> findAll() {
         return  bookRepository.findAll();
     }
 
     @Override
-    public Book insert(Book book) {
-        return bookRepository.save(book);
+    public BookEntity insert(BookEntity bookEntity) {
+        return bookRepository.save(bookEntity);
     }
 
     @Override
-    public void update(Book book) {
-        findByBookId(book.getId());
-        book.setTitle("");
-        bookRepository.save(book);
+    public void update(BookEntity bookEntity) {
+        findByBookId(bookEntity.getId());
+        bookEntity.setTitle("");
+        bookRepository.save(bookEntity);
     }
 
     @Override

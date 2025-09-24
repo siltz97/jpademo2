@@ -1,16 +1,17 @@
 package com.example.demo.entity.primary;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
-@Table(schema="dbo",name="authors")
-public class Author {
+@Table(schema="dbo",name="library_authors")
+public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +24,10 @@ public class Author {
     @Column(name="surname")
     private String lastName;
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "mainAuthor")
-    private List<Book> books = new ArrayList<>();
+    @Column(name="birth_date")
+    private Date birthDate;
+
+    @OneToMany(mappedBy = "autore", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<BookEntity> libri = new ArrayList<>();
 }

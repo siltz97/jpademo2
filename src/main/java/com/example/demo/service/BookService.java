@@ -1,18 +1,18 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.primary.Book;
+import com.example.demo.entity.primary.BookEntity;
 
 import java.util.List;
 
 
 public interface BookService {
-    Book findByBookId(Integer id);
+    BookEntity findByBookId(Integer id);
 
-    List<Book> findAll();
+    List<BookEntity> findAll();
 
-    Book insert(Book book);
+    BookEntity insert(BookEntity bookEntity);
 
-    void update(Book book);
+    void update(BookEntity bookEntity);
 
     void delete(Integer id);
 }

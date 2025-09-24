@@ -1,5 +1,6 @@
 package com.example.demo.entity.primary;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,7 +9,7 @@ import lombok.Data;
 @Entity
 
 @Table(schema="dbo",name="library_books")
-public class Book {
+public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +25,10 @@ public class Book {
     private Integer totalCopies;
     @Column(name="available_copies")
     private Integer availableCopies;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id", nullable = false)
+    @JsonBackReference
+    private AuthorEntity autore;
+
 }
