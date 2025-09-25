@@ -6,14 +6,11 @@ import com.example.demo.mapper.AuthorMapper;
 import com.example.demo.service.impl.AuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @RestController()
 public class AuthorController {
@@ -51,5 +48,12 @@ public class AuthorController {
         AuthorEntity authorEntity = authorService.findYoungest2();
         AuthorDto authorDto = authorMapper.convertToDto(authorEntity);
         return ResponseEntity.ok(authorDto);
+    }
+
+    @GetMapping("/letter/{letter}")
+    public ResponseEntity<List<AuthorDto>> findByLetter(@PathVariable String letter) {
+        List<AuthorEntity> authors = authorService.findByLetter(letter);
+        List<AuthorDto> authorDtos = authors.stream().map(authorEntity -> authorMapper.convertToDto(authorEntity)).toList();
+        return ResponseEntity.ok(authorDtos);
     }
 }

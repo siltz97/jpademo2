@@ -4,15 +4,18 @@ import com.example.demo.entity.primary.AuthorEntity;
 import com.example.demo.repo.primary.AuthorRepository;
 import com.example.demo.service.AuthorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
+
 public class AuthorServiceImpl implements AuthorService {
 
-    private final AuthorRepository authorRepository;
+    @Autowired
+    private AuthorRepository authorRepository;
 
     @Override
     public List<AuthorEntity> findAll() {
@@ -43,12 +46,20 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorEntity findYoungest() {
-        return authorRepository.findTopByBirthDateOrderByBirthDateDesc();
+        return authorRepository.findTopByOrderByBirthDateDesc().get();
     }
 
     @Override
     public AuthorEntity findYoungest2() {
-        return authorRepository.findFirstByBirthDateOrderByBirthDateDesc();
+        return authorRepository.findFirstByOrderByBirthDateDesc().get();
+    }
+
+    @Override
+    public List<AuthorEntity> findByLetter(String letter) {
+        List<AuthorEntity> authors = authorRepository.findAllByFirstNameStartsWith(letter).stream()
+                .map(a->a.get())
+                .toList();
+        return authors;
     }
 
 

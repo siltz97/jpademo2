@@ -56,7 +56,9 @@ public class PrimaryDB {
 
     @Bean
     @Primary
-    public PlatformTransactionManager primaryTransactionManager(@Qualifier("primaryEntityManagerFactory") EntityManagerFactory factory) {
+    public PlatformTransactionManager primaryTransactionManager(
+            @Qualifier("primaryEntityManagerFactory") EntityManagerFactory factory
+    ) {
         return new JpaTransactionManager(factory);
     }
 }

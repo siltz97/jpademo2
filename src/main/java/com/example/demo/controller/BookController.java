@@ -21,10 +21,10 @@ public class BookController {
         return ResponseEntity.ok(bookEntities);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<BookEntity> getBook(@PathVariable Integer id) {
-        return ResponseEntity.ok(bookService.findByBookId(id));
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<BookEntity> getBook(@PathVariable Integer id) {
+//        return ResponseEntity.ok(bookService.findByBookId(id));
+//    }
 
     @PutMapping("/update")
     public ResponseEntity<BookEntity> updateBook(@RequestBody BookEntity bookEntity) {
